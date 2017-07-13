@@ -7,6 +7,9 @@ int main(int argc, char* argv[])
 {
     // Console logger with color
     auto console = spdlog::stdout_color_mt("console");
+    spdlog::set_level(spdlog::level::trace);
+
+    
     console->info("Starting deepstream client.");
 
     endpoint server("ws://echo.websocket.org");
