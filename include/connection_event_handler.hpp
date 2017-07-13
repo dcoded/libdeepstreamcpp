@@ -9,11 +9,11 @@
 
 class connection_event_handler {
 
-	using asio_client = websocketpp::config::asio_client;
-	using client      = websocketpp::client <asio_client>;
+    using asio_client = websocketpp::config::asio_client;
+    using client      = websocketpp::client <asio_client>;
 
-	public: void on_open(client* client , websocketpp::connection_hdl hdl);
-	public: void on_error(client* client, websocketpp::connection_hdl hdl);
-	public: void on_close(client* client, websocketpp::connection_hdl hdl);
-	public: void on_message(websocketpp::connection_hdl hdl, client::message_ptr msg);
+    public: void on_open(client* client , websocketpp::connection_hdl hdl);
+    public: void on_error(client* client, websocketpp::connection_hdl hdl);
+    public: void on_close(client* client, websocketpp::connection_hdl hdl);
+    public: void on_message(websocketpp::connection_hdl hdl, client::message_ptr msg);
 };

@@ -12,13 +12,13 @@
 typedef websocketpp::client <websocketpp::config::asio_client> client;
 
 class endpoint {
-	public: explicit endpoint(const std::string uri);
-	public: connection&& connect();
+    public: explicit endpoint(const std::string uri);
+    public: connection&& connect();
 
-	public: ~endpoint();
+    public: ~endpoint();
 
-	private: std::string uri_;
-	private: websocketpp::client <websocketpp::config::asio_client> client_;
-	private: websocketpp::lib::shared_ptr<websocketpp::lib::thread> thread_;
+    private: std::string uri_;
+    private: websocketpp::client <websocketpp::config::asio_client> client_;
+    private: websocketpp::lib::shared_ptr<websocketpp::lib::thread> thread_;
 
 };

@@ -11,21 +11,21 @@
 
 class connection : public connection_event_handler {
 
-	using asio_client = websocketpp::config::asio_client;
-	using client      = websocketpp::client <asio_client>;
-	using endpoint    = websocketpp::endpoint<websocketpp::connection<asio_client>, asio_client>;
-	
-	public: explicit connection(
-		const client* client,
-		const websocketpp::connection_hdl hdl, 
-		const std::string uri);
+    using asio_client = websocketpp::config::asio_client;
+    using client      = websocketpp::client <asio_client>;
+    using endpoint    = websocketpp::endpoint<websocketpp::connection<asio_client>, asio_client>;
+    
+    public: explicit connection(
+        const client* client,
+        const websocketpp::connection_hdl hdl, 
+        const std::string uri);
 
-	public: ~connection();
+    public: ~connection();
 
-	public: bool send(const std::string message);
-	public: bool close();
+    public: bool send(const std::string message);
+    public: bool close();
 
-	private: endpoint* endpoint_;
-	private: const websocketpp::connection_hdl hdl_;
-	private: const std::string uri_;
+    private: endpoint* endpoint_;
+    private: const websocketpp::connection_hdl hdl_;
+    private: const std::string uri_;
 };
