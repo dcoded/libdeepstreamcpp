@@ -2,7 +2,8 @@
 
 endpoint::endpoint(const std::string uri)
 :    uri_(uri)
-{   DEBUG_TRACE;
+{   
+    DEBUG_TRACE;
     auto console = spdlog::get("console");
     console->info("setting up endpoint: {}", uri);
     client_.clear_access_channels(websocketpp::log::alevel::all);
@@ -17,7 +18,8 @@ endpoint::endpoint(const std::string uri)
 }
 
 endpoint::~endpoint()
-{   DEBUG_TRACE;
+{   
+    DEBUG_TRACE;
     auto console = spdlog::get("console");
     console->info("taking down endpoint: {}", uri_);
     client_.stop_perpetual();
@@ -25,7 +27,8 @@ endpoint::~endpoint()
 }
 
 connection&& endpoint::connect()
-{   DEBUG_TRACE;
+{   
+    DEBUG_TRACE;
     auto console = spdlog::get("console");
     console->info("creating connection object");
 

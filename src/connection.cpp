@@ -7,23 +7,27 @@ connection::connection(
 :   endpoint_(dynamic_cast<endpoint*> (const_cast<::connection::client*>(client)))
 ,   hdl_(hdl)
 ,   uri_(uri)
-{   DEBUG_TRACE;
+{   
+    DEBUG_TRACE;
 }
 
 connection::~connection()
-{   DEBUG_TRACE;
+{   
+    DEBUG_TRACE;
     close();
 }
 
 bool connection::close()
-{   DEBUG_TRACE;
+{   
+    DEBUG_TRACE;
     websocketpp::lib::error_code ec;
     endpoint_->close(hdl_, websocketpp::close::status::going_away, "", ec);
     return !ec;
 }
 
 bool connection::send(const std::string message)
-{   DEBUG_TRACE;
+{   
+    DEBUG_TRACE;
     auto console = spdlog::get("console");
     console->info("send message: {}", message);
 
