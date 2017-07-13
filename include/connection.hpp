@@ -1,5 +1,6 @@
 #pragma once
 
+#include "connection_event_handler.hpp"
 
 #include <spdlog/spdlog.h>
 
@@ -8,17 +9,6 @@
 
 #include <websocketpp/common/thread.hpp>
 #include <websocketpp/common/memory.hpp>
-
-class connection_event_handler {
-
-	using asio_client = websocketpp::config::asio_client;
-	using client      = websocketpp::client <asio_client>;
-
-	public: void on_open(client* client , websocketpp::connection_hdl hdl);
-	public: void on_error(client* client, websocketpp::connection_hdl hdl);
-	public: void on_close(client* client, websocketpp::connection_hdl hdl);
-	public: void on_message(websocketpp::connection_hdl hdl, client::message_ptr msg);
-};
 
 class connection : public connection_event_handler {
 
@@ -30,6 +20,8 @@ class connection : public connection_event_handler {
 		const client* client,
 		const websocketpp::connection_hdl hdl, 
 		const std::string uri);
+
+	public: ~connection();
 
 	public: bool send(const std::string message);
 	public: bool close();
