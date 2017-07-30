@@ -46,7 +46,9 @@ void connection_event_handler::on_message(
     client::message_ptr msg)
 {   
     DEBUG_TRACE;
+    const std::string message = msg->get_payload();
+
     auto console = spdlog::get("console");
-    console->info("recv message: {}", msg->get_payload());
+    console->info("recv message: {}", message);
 }
 
