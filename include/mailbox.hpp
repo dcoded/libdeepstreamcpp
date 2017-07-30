@@ -196,8 +196,12 @@ const message_type mailbox<message_type>::peek(listener_type* listener)
 template <typename message_type>
 bool mailbox<message_type>::has_unread_messages(listener_type* listener)
 {
-    // a nullptr means no unread messages exist.
-    return (messages_ptr_[listener] != messages_.end());
+    return (
+        // is this 'listener' actually subscribed?
+        messages_ptr_.find(listener) != messages_ptr_.end() &&
+        // a nullptr means no unread messages exist.
+        messages_ptr_[listener] != messages_.end()
+    );
 }
 
 
